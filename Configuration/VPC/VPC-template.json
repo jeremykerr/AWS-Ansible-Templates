@@ -1,0 +1,27 @@
+{
+    "VPC": {
+        "_meta": {
+            "label": "VPC Label",
+            "output_directory": "/etc/ansible/AWS/Infrastructure/VPC/",
+            "output_filename": "VPC-template.json",
+        },
+        "aws_access_key": null,
+        "aws_secret_key": null,
+        "cidr_block": "10.0.0.0/16",
+        "dhcp_opts_id": null,
+        "dns_hostnames": "yes",
+        "dns_support": "yes",
+        "ec2_url": null,
+        "multi_ok": "no",
+        "name": "VPC Template",
+        "profile": "ansible_role",
+        "region": "us-east-1",
+        "security_token": null,
+        "state": "present",
+        "tags": {
+            "Purpose": "VPC Template"
+        },
+        "tenancy": "default",
+        "validate_certs": "yes"
+    }
+}

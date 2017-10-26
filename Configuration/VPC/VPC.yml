@@ -1,0 +1,76 @@
+
+# $ sudo ansible-playbook VPC.yml -e "@VPC-template.json"
+- hosts: local
+
+  tasks:
+    - name: "Define VPC Metadata"
+      set_fact:
+        label: "{{ VPC._meta.label }}"
+        output_directory: "{{ VPC._meta.output_directory }}"
+        output_filename: "{{ VPC._meta.output_filename }}"
+
+    - name: "Get {{ label }} VPC facts"
+      set_fact:
+        #aws_access_key:   "{{ VPC.aws_access_key }}"
+        #aws_secret_key:   "{{ VPC.aws_secret_key }}"
+        cidr_block:       "{{ VPC.cidr_block }}"
+        #dhcp_opts_id:     "{{ VPC.dhcp_opts_id }}"
+        dns_hostnames:    "{{ VPC.dns_hostnames }}"
+        dns_support:      "{{ VPC.dns_support }}"
+        #ec2_url:          "{{ VPC.ec2_url }}"
+        multi_ok:         "{{ VPC.multi_ok }}"
+        name:             "{{ VPC.name }}"
+        profile:          "{{ VPC.profile }}"
+        region:           "{{ VPC.region }}"
+        #security_token:   "{{ VPC.security_token }}"
+        state:            "{{ VPC.state }}"
+        tags:             "{{ VPC.tags }}"
+        tenancy:          "{{ VPC.tenancy }}"
+        validate_certs:   "{{ VPC.validate_certs }}"
+
+    - name: "Create {{ label }} VPC"
+      ec2_vpc_net:
+        #aws_access_key:   "{{ aws_access_key }}"
+        #aws_secret_key:   "{{ aws_secret_key }}"
+        cidr_block:       "{{ cidr_block }}"
+        #dhcp_opts_id:     "{{ dhcp_opts_id }}"
+        dns_hostnames:    "{{ dns_hostnames }}"
+        dns_support:      "{{ dns_support }}"
+        #ec2_url:          "{{ ec2_url }}"
+        multi_ok:         "{{ multi_ok }}"
+        name:             "{{ name }}"
+        profile:          "{{ profile }}"
+        region:           "{{ region }}"
+        #security_token:   "{{ security_token }}"
+        state:            "{{ state }}"
+        tags:             "{{ tags }}"
+        tenancy:          "{{ tenancy }}"
+        validate_certs:   "{{ validate_certs }}"
+      register: vpc_result
+      become: True
+      become_user: "mobile"
+
+    - name: "Check if {{ label }} VPC output exists"
+      stat:
+        path: "{{ output_directory }}/{{ output_filename }}"
+      register: vpc_result_exists
+
+    - name: "Ensure {{ label }} VPC output directory exists"
+      file:
+        group: root
+        mode: 0775
+        owner: root
+        path: "{{ output_directory }}"
+        recurse: yes
+        state: directory
+      become: True
+      become_method: sudo
+
+    - name: "Save {{ label }} VPC identifiers and results"
+      copy:
+        content: "{{ vpc_result }}"
+        dest: "{{ output_directory }}/{{ output_filename }}"
+        mode: 0664
+      when: vpc_result_exists.stat.exists == false or vpc_result.changed
+      become: True
+      become_method: sudo
