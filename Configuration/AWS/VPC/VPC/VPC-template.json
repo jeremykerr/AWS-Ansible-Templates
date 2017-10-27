@@ -2,7 +2,7 @@
     "VPC": {
         "_meta": {
             "label": "VPC Label",
-            "output_directory": "/etc/ansible/AWS/Infrastructure/VPC/",
+            "output_directory": "/etc/ansible/AWS/Infrastructure/VPC/VPC/",
             "output_filename": "VPC-template.json",
         },
         "aws_access_key": null,
