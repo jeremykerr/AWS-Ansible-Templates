@@ -1,0 +1,78 @@
+
+# $ sudo ansible-playbook Internet-Gateway.yml -e "@Internet-Gateway-template.json"
+- hosts: local
+
+  tasks:
+    - name: "Define Internet Gateway Metadata"
+      set_fact:
+        label: "{{ Internet_Gateway._meta.label }}"
+        output_directory: "{{ Internet_Gateway._meta.output_directory }}"
+        output_filename: "{{ Internet_Gateway._meta.output_filename }}"
+
+    - name: "Define Dependency Metadata (VPC)"
+      set_fact:
+        id_directory: "{{ Internet_Gateway._vpc_id.id_directory }}"
+        id_filename: "{{ Internet_Gateway._vpc_id.id_filename }}"
+        id_var_keys: "{{ Internet_Gateway._vpc_id.id_var_keys }}"
+
+    - name: "Load Dependency Data (VPC)"
+      include_vars: 
+        file: "{{ id_directory }}{{ id_filename }}"
+        name: Dependency_VPC
+
+    - name: "Get Dependency Data (VPC)"
+      set_fact:
+        vpc_id: "{{ Dependency_VPC.vpc.id }}"
+
+    - name: "Get {{ label }} Internet Gateway Facts"
+      set_fact:
+        #aws_access_key: "{{ Internet_Gateway.aws_access_key }}"
+        #aws_secret_key: "{{ Internet_Gateway.aws_secret_key }}"
+        #ec2_url: "{{ Internet_Gateway.ec2_url }}"
+        profile: "{{ Internet_Gateway.profile }}"
+        region: "{{ Internet_Gateway.region }}"
+        #security_token: "{{ Internet_Gateway.security_token }}"
+        state: "{{ Internet_Gateway.state }}"
+        tags: "{{ Internet_Gateway.tags }}"
+        validate_certs: "{{ Internet_Gateway.validate_certs }}"
+
+    - name: "Create {{ label }} Internet Gateway"
+      ec2_vpc_igw:
+        #aws_access_key: "{{ aws_access_key }}"
+        #aws_secret_key: "{{ aws_secret_key }}"
+        #ec2_url: "{{ ec2_url }}"
+        profile: "{{ profile }}"
+        region: "{{ region }}"
+        #security_token: "{{ security_token }}"
+        state: "{{ state }}"
+        tags: "{{ tags }}"
+        validate_certs: "{{ validate_certs }}"
+        vpc_id: "{{ vpc_id }}"
+      register: igw_result
+      become: True
+      become_user: "mobile"
+
+    - name: "Check if {{ label }} Internet Gateway output exists"
+      stat:
+        path: "{{ output_directory }}/{{ output_filename }}"
+      register: igw_result_exists
+
+    - name: "Ensure {{ label }} Internet Gateway output directory exists"
+      file:
+        group: root
+        mode: 0775
+        owner: root
+        path: "{{ output_directory }}"
+        recurse: yes
+        state: directory
+      become: True
+      become_method: sudo
+
+    - name: "Save {{ label }} Internet Gateway identifiers and results"
+      copy:
+        content: "{{ igw_result }}"
+        dest: "{{ output_directory }}/{{ output_filename }}"
+        mode: 0664
+      when: igw_result_exists.stat.exists == false or igw_result.changed
+      become: True
+      become_method: sudo
