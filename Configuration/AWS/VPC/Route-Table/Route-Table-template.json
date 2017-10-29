@@ -15,6 +15,12 @@
         "purge_subnets": true,
         "region": "us-east-1",
         "route_table_id": null,
+        "routes": [
+            {
+                "dest": "0.0.0.0/0",
+                "gateway_id": "igw"
+            }
+        ],
         "security_token": null,
         "state": "present",
         "subnets": [
