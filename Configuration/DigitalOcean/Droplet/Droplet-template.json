@@ -1,0 +1,27 @@
+{
+    "Droplet": {
+        "_meta": {
+            "label": null,
+            "output_directory": "/etc/ansible/DigitalOcean/Infrastructure/Droplet/",
+            "output_filename": "Droplet-template.json",
+        },
+        "api_token": null,
+        "backups_enabled": null,
+        "command": null,
+        "id": null,
+        "image_id": null,
+        "ipv6": null,
+        "name": null,
+        "private_networking": null,
+        "region_id": null,
+        "size_id": null,
+        "ssh_key_ids": null,
+        "ssh_pub_key": null,
+        "state": null,
+        "unique_name": null,
+        "user_data": null,
+        "virtio": null,
+        "wait": null,
+        "wait_timeout": null
+    }
+}
