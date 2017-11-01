@@ -1,0 +1,21 @@
+{
+    "Volume": {
+        "_meta": {
+            "label": null,
+            "output_directory": "/etc/ansible/DigitalOcean/Infrastructure/Volume/",
+            "output_filename": "Volume-template.json",
+        },
+        "api_token": null,
+        "block_size": null,
+        "command": null,
+        "description": null,
+        "_droplet_id": {
+            "id_directory": "/etc/ansible/DigitalOcean/Infrastructure/Droplet/",
+            "id_filename": "Droplet-template.json"
+        },
+        "region": null,
+        "state": null,
+        "timeout": null,
+        "volume_name": null
+    }
+}
