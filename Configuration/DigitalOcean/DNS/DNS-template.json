@@ -1,0 +1,14 @@
+{
+    "Volume": {
+        "_meta": {
+            "label": null,
+            "output_directory": "/etc/ansible/DigitalOcean/Infrastructure/Volume/",
+            "output_filename": "Volume-template.json",
+        },
+        "api_token": null,
+        "id": null,
+        "ip": null,
+        "name": null,
+        "state": null
+    }
+}
