@@ -1,9 +1,9 @@
 {
-    "Volume": {
+    "DNS": {
         "_meta": {
             "label": null,
-            "output_directory": "/etc/ansible/DigitalOcean/Infrastructure/Volume/",
-            "output_filename": "Volume-template.json",
+            "output_directory": "/etc/ansible/DigitalOcean/Infrastructure/DNS/",
+            "output_filename": "DNS-template.json",
         },
         "api_token": null,
         "id": null,
