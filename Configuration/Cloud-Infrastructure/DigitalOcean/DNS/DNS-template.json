@@ -1,9 +1,9 @@
 {
     "DNS": {
         "_meta": {
-            "label": null,
-            "output_directory": "/etc/ansible/DigitalOcean/Infrastructure/DNS/",
-            "output_filename": "DNS-template.json",
+            "label": "dns 0",
+            "output_directory": "/etc/ansible/details.d/digital_ocean/dns/",
+            "output_filename": "dns_0.json",
         },
         "api_token": null,
         "id": null,

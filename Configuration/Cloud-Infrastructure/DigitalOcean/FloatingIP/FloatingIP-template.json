@@ -1,0 +1,17 @@
+{
+    "FloatingIP": {
+        "_meta": {
+            "label": "floating ip 0",
+            "output_directory": "/etc/ansible/details.d/digital_ocean/floating_ip/",
+            "output_filename": "floating_ip_0.json",
+        },
+        "_droplet_id": {
+            "id_directory": "/etc/ansible/details.d/digital_ocean/droplet/",
+            "id_filename": "droplet_0.json"
+        },
+        "ip": null,
+        "oauth_token": null,
+        "region": null,
+        "state": null
+    }
+}

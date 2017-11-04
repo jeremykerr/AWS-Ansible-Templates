@@ -13,7 +13,6 @@
       set_fact:
         id_directory: "{{ Internet_Gateway._vpc_id.id_directory }}"
         id_filename: "{{ Internet_Gateway._vpc_id.id_filename }}"
-        id_var_keys: "{{ Internet_Gateway._vpc_id.id_var_keys }}"
 
     - name: "Load Dependency Data (VPC)"
       include_vars: 

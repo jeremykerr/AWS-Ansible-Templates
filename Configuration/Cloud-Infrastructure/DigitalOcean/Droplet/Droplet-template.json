@@ -1,9 +1,9 @@
 {
     "Droplet": {
         "_meta": {
-            "label": null,
-            "output_directory": "/etc/ansible/DigitalOcean/Infrastructure/Droplet/",
-            "output_filename": "Droplet-template.json",
+            "label": "droplet 0",
+            "output_directory": "/etc/ansible/details.d/digial_ocean/droplet/",
+            "output_filename": "droplet_0.json",
         },
         "api_token": null,
         "backups_enabled": null,

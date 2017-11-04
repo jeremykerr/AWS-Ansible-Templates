@@ -1,9 +1,9 @@
 {
     "VPC": {
         "_meta": {
-            "label": "VPC Label",
-            "output_directory": "/etc/ansible/AWS/Infrastructure/VPC/VPC/",
-            "output_filename": "VPC-template.json",
+            "label": "vpc 0",
+            "output_directory": "/etc/ansible/details.d/aws/vpc/vpc/",
+            "output_filename": "vpc_0.json",
         },
         "aws_access_key": null,
         "aws_secret_key": null,
@@ -13,13 +13,13 @@
         "dns_support": "yes",
         "ec2_url": null,
         "multi_ok": "no",
-        "name": "VPC Template",
+        "name": "vpc 0",
         "profile": "ansible_role",
         "region": "us-east-1",
         "security_token": null,
         "state": "present",
         "tags": {
-            "Purpose": "VPC Template"
+            "Purpose": "vpc 0"
         },
         "tenancy": "default",
         "validate_certs": "yes"

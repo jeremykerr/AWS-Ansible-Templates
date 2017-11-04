@@ -1,0 +1,25 @@
+{
+    "Internet_Gateway": {
+        "_meta": {
+            "label": "internet gateway 0",
+            "output_directory": "/etc/ansible/details.d/aws/vpc/internet_gateway/",
+            "output_filename": "internet_gateway_0.json",
+        },
+        "aws_access_key": null,
+        "aws_secret_key": null,
+        "ec2_url": null,
+        "profile": "ansible_role",
+        "region": "us-east-1",
+        "security_token": null,
+        "state": "present",
+        "tags": {
+            "Name": "internet gateway 0",
+            "Purpose": "internet gateway 0"
+        },
+        "validate_certs": "yes",
+        "_vpc_id": {
+            "id_directory": "/etc/ansible/details.d/aws/vpc/vpc/",
+            "id_filename": "vpc_0.json"
+        }
+    }
+}

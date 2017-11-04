@@ -1,9 +1,9 @@
 {
     "Route_Table": {
         "_meta": {
-            "label": "Route Table Label",
-            "output_directory": "/etc/ansible/AWS/Infrastructure/VPC/Route-Table/",
-            "output_filename": "Route-Table-template.json",
+            "label": "route table 0",
+            "output_directory": "/etc/ansible/details.d/aws/vpc/route_table/",
+            "output_filename": "route_table_0.json",
         },
         "aws_access_key": null,
         "aws_secret_key": null,
@@ -27,17 +27,13 @@
             "10.0.0.0/24"
         ],
         "tags": {
-            "Name": "Route Table Template",
-            "Purpose": "Route Table Template"
+            "Name": "route table 0",
+            "Purpose": "route table 0"
         },
         "validate_certs": "yes",
         "_vpc_id": {
-            "id_directory": "/etc/ansible/AWS/Infrastructure/VPC/VPC/",
-            "id_filename": "VPC-template.json",
-            "id_var_keys": [
-                "vpc",
-                "id"
-            ]
+            "id_directory": "/etc/ansible/details.d/aws/vpc/vpc/",
+            "id_filename": "vpc_0.json"
         }
     }
 }
